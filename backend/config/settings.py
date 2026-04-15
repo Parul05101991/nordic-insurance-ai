@@ -1,0 +1,1 @@
+MODEL_PATH = "/Users/parulsharma/Desktop/NordicInsureAI /artifacts/insurance_premium_predictor_model.pkl"
