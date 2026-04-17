@@ -21,3 +21,6 @@ projectenv/
 
 # IDE
 .vscode/
+
+# specific to this project
+notebooks/Dataset.py
