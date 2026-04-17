@@ -3,7 +3,7 @@ import pandas as pd
 from fastapi import FastAPI, HTTPException
 from backend.schema.user_input import UserInput
 from backend.schema.prediction_response import PredictionResponse
-from backend.models.predict import predict_output, MODEL_VERSION, model
+from backend.predict import predict_output, MODEL_VERSION, model
 from backend.utils.preprocess import build_features
 from backend.config.pricing_service import calculate_final_premium
 

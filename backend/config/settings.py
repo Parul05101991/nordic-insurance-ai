@@ -1,1 +1,1 @@
-MODEL_PATH = "/Users/parulsharma/Desktop/NordicInsureAI /artifacts/insurance_premium_predictor_model.pkl"
+MODEL_PATH = "backend/model/insurance_premium_predictor_model.pkl"
