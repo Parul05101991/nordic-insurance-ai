@@ -16,8 +16,8 @@ projectenv/
 # Logs
 *.log
 
-# Model files (optional if large)
-*.pkl
+# Model files 
+#*.pkl
 
 # IDE
 .vscode/
