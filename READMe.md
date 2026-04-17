@@ -1,83 +1,146 @@
 # 🇩🇰 Nordic Insurance AI
 
-An end-to-end **AI-powered insurance risk prediction and pricing system** that combines Machine Learning with rule-based business logic to generate personalized insurance premiums.
+An end-to-end **AI-powered insurance pricing system** that predicts customer risk and calculates dynamic insurance premiums using Machine Learning + Business Rules.
 
 ---
 
-## 🚀 Overview
+## 📌 Highlights
 
-This project predicts a user's insurance risk category (**Low / Medium / High**) using a trained ML model and calculates the final premium using Nordic-specific pricing rules such as:
+- End-to-end ML system (UI → API → Model → Pricing)
+- Real-world insurance use case (Denmark 🇩🇰)
+- Explainable AI with transparent pricing
+- Production-style modular architecture
 
-- City-based risk factors  
+---
+
+## 🚀 Live Workflow
+
+High-level flow of the system:
+
+```text
+Streamlit UI  
+↓  
+FastAPI `/predict` Endpoint  
+↓  
+Pydantic Validation  
+↓  
+Feature Engineering / Preprocessing
+↓  
+ML Risk Prediction  
+↓  
+Premium Calculation (Business Rules)  
+↓  
+Response to UI
+```
+
+---
+
+## 🏗️ System Architecture
+
+Detailed component-level architecture:
+
+```mermaid
+graph TD
+A[Streamlit UI] --> B[FastAPI Backend]
+B --> C[Pydantic Validation]
+C --> D[Feature Engineering]
+D --> E[ML Risk Model]
+E --> F[Pricing Engine]
+F --> G[Response Builder]
+G --> A
+```
+---
+
+## 🗂️ Dataset & Model
+
+The system is built using an insurance dataset containing demographic, health, and lifestyle features.
+
+### 📊 Dataset Features
+- Age  
+- BMI-related features (height, weight)  
+- Income level  
 - Smoking status  
-- Income-based adjustment  
-- Insurance tax factor  
+- City/location  
+- Occupation  
 
-It is designed as a **production-style system** with clear separation between ML, validation, and business logic.
+### ⚙️ Data Processing
+- Data is cleaned and preprocessed  
+- Categorical features are encoded  
+- Numerical features are normalized  
+- Feature engineering is performed to capture additional patterns and improve model performance  
 
----
 
-## 🧠 System Architecture
+### 🤖 Model Details
 
-Frontend (UI)
-↓
-FastAPI Backend
-↓
-Pydantic Validation
-↓
-ML Model (Risk Prediction)
-↓
-Pricing Engine (Business Rules)
-↓
-Final Output (Premium + Explanation)
-
+- **Model Type:** Gradient Boosting Classifier  
+- **Task:** Multi-class classification (Low / Medium / High risk)  
+- **Output:** Risk category with confidence score  
 
 ---
 
-## 🔄 End-to-End Flow
+## 🔄 System Overview
 
-1. User enters details in the frontend  
+1. User enters details in Streamlit UI  
 2. Request is sent to FastAPI backend  
-3. Pydantic validates the input  
-4. ML model predicts risk category  
-5. Pricing engine calculates premium  
-6. Backend returns results  
-7. Frontend displays insights  
+3. Pydantic validates input data  
+4. Features are engineered/preprocessed  
+5. ML model predicts risk category  
+6. Pricing engine calculates insurance premium  
+7. Response is formatted and returned  
+8. Streamlit displays results  
 
 ---
 
 ## ⚙️ Features
 
-- ✅ ML-based risk classification (Low / Medium / High)  
-- ✅ Rule-based insurance pricing engine  
-- ✅ City risk scoring (Denmark-focused 🇩🇰)  
-- ✅ Smoking & income-based adjustments  
-- ✅ Strict input validation using Pydantic  
-- ✅ Explainable AI (clear pricing explanation)  
-- ✅ Savings tips for users  
-- ✅ Modular backend (production-ready structure)  
+- Risk classification (Low / Medium / High)
+- Dynamic premium calculation using business rules
+- City-based risk scoring (Denmark-focused 🇩🇰)
+- Lifestyle-based adjustments (smoking, income)
+- Input validation using Pydantic
+- Detailed explanation of pricing factors
+- Personalized savings recommendations 
+
+---
+
+## 🧠 Explainability
+
+The system provides transparent insurance decisions by breaking down how the final risk and premium are calculated.
+
+### 🔍 Key Factors
+
+- **ML Model Output** – Base risk predicted from user data  
+- **City Adjustment** – Location-based risk variation  
+- **Smoking Factor** – Increased risk for smokers  
+- **Income Impact** – Normalization for fair pricing  
+
+### ✅ Outcome
+- Transparent  
+- Interpretable  
+- User-friendly
 
 ---
 
 ## 📦 Tech Stack
 
-### 🔹 Backend
-- Python
-- FastAPI
-- Pydantic
+### 🖥️ Backend
+- Python  
+- FastAPI  
+- Pydantic  
 
-### 🔹 Machine Learning
-- Scikit-learn
-- Pandas
-- Pickle
+### 🤖 Machine Learning
+- Scikit-learn  
+- Pandas  
+- Pickle  
 
-### 🔹 Frontend
-- Streamlit / HTML / CSS / JavaScript
+### 🌐 Frontend
+- Streamlit  
 
 ---
 
-## 📊 Input Features
+## 📊 Input & Output Overview
 
+### 🧾 Input Features
 - Age (18–65)  
 - Weight (55–100 kg)  
 - Height (160–195 cm)  
@@ -86,25 +149,35 @@ Final Output (Premium + Explanation)
 - City (Denmark)  
 - Occupation  
 
----
-
-## 💰 Output
-
-- Predicted Risk Category  
+### 🎯 Model Output
+- Risk Category (Low / Medium / High)  
 - Confidence Score  
-- Class Probabilities  
 - Final Insurance Premium (DKK)  
-- Explanation of pricing  
-- Personalized savings tips  
+- Explanation of pricing factors  
+- Personalized savings tips
 
----
+  ---
 
 ## 🧮 Pricing Logic
 
-Final Premium = Base Premium × City Risk × Smoking Factor × Income Factor × Tax Factor
+The final insurance premium is calculated using a rule-based pricing engine that adjusts risk based on multiple factors.
+
+### 💰 Formula
+
+`Final Premium = Base Premium × City Risk × Smoking Factor × Income Factor × Tax Factor`
+
+### ⚙️ Key Adjustments
+
+- **City Risk** – Location-based risk multiplier (Denmark regions 🇩🇰)  
+- **Smoking Factor** – Higher premium for smokers  
+- **Income Factor** – Adjusts affordability and risk level  
+- **Tax Factor** – Regional insurance tax adjustment  
+
+---
 
 ## 📁 Project Structure
 
+```text
 NordicInsureAI/
 │
 ├── backend/
@@ -142,75 +215,22 @@ NordicInsureAI/
 │
 ├── requirements.txt
 └── README.md
-
----
-
-## 🔄 System Workflow
-
-User Input (Frontend)
-↓
-Streamlit UI
-↓
-FastAPI Backend (app.py)
-↓
-Pydantic Validation (schema/)
-↓
-ML Model Prediction (model/)
-↓
-predict.py (Inference Layer)
-↓
-Pricing Engine (config/)
-↓
-Final Response (Premium + Explanation)
-↓
-Frontend Display
-
-
----
-
-## ⚙️ Installation
-
-```bash
-pip install -r requirements.txt
 ```
 
 ---
-## 🚀 Run the Project
 
-### Start Backend (FastAPI)
+## 📡 FastAPI Layer
 
-```bash
-uvicorn backend.app:app --reload
-```
+The backend exposes a REST API that handles:
 
-### Start Frontend (Streamlit)
-```bash
-streamlit run frontend/streamlit_app.py
-```
-
-## 📡 API Layer (FastAPI Service)
-
-This project exposes a REST API built using **FastAPI** that allows external applications (frontend, apps, or other services) to access the ML model and pricing engine.
-
-The API acts as the **bridge between the user interface and the AI system**, handling:
-
-- Input validation (Pydantic)
-- ML-based risk prediction
-- Pricing engine execution
+- Input validation
+- ML prediction
+- Pricing calculation
 - Response formatting
 
----
+### 📥 Example Request (FastAPI)
 
-## 📌 API Endpoint
-
-### 🔹 Predict Insurance Premium
-
-```text
-POST /predict
-```
----
-
-## 📥 Example Request
+```json
 {
   "age": 30,
   "weight": 75,
@@ -220,44 +240,105 @@ POST /predict
   "city": "Copenhagen",
   "occupation": "private_job"
 }
+```
 
----
-## 📤 Example Response
+### 📤 Example Response
+
+```json
 {
   "predicted_category": "Medium",
   "confidence": 0.92,
   "final_premium_dkk": 8200,
   "currency": "DKK",
   "explanation": [
-    "Base risk calculated from ML model",
-    "City adjustment applied",
-    "Smoking factor applied"
+     "Your insurance starts from a base price of 600 DKK based on your risk category (Medium)",
+     "Living in Esbjerg affects your risk score (multiplier: 1.0)",
+     "Smoking increases health risk and therefore your premium",
+     "Your income level (DKK 460000.0) adjusts affordability (multiplier: 1.0)",
+     " A standard Danish insurance tax is applied to the final premium"
   ],
   "savings_tips": [
     "Avoid smoking to reduce premium",
     "Living in low-risk city reduces cost"
   ]
 }
-----
+```
+---
 
-## 🧠 Key Features
-ML-based risk prediction
-Rule-based pricing engine
-FastAPI backend
-Streamlit frontend
-Pydantic validation
-Explainable AI outputs
+## 🖥️ Streamlit Application
 
+Interactive frontend for the insurance risk and pricing system.
+
+### ⚙️ Features
+- User input form (age, income, city, lifestyle)
+- Sends request to FastAPI `/predict`
+- Displays:
+  - Risk category
+  - Confidence score
+  - Final premium (DKK)
+  - Explanation of factors
+  - Savings tips
+
+### 📊 Visualization
+- Waterfall chart showing:
+  - Base ML risk
+  - City adjustment
+  - Smoking factor
+  - Income adjustment
+
+### 📄 PDF Report
+- Downloadable text-only report
+- Includes risk, premium, explanation, and tips  
+- Sample: `artifacts/insurance_report.pdf`
+
+  ---
+  
+## 🚀 Run Locally
+
+### 🧬 Clone Repository
+
+```bash
+git clone https://github.com/parul01101991/NordicInsureAI.git
+```
+
+### ⚙️ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 🖥️ Start Backend (FastAPI)
+
+```bash
+uvicorn backend.app:app --reload
+```
+
+### 🌐 Start Frontend (Streamlit)
+
+```bash
+streamlit run frontend/streamlit_app.py
+```
+---
+
+## 🎯 Design Principles
+
+- Separation of concerns  
+- Modular architecture  
+- Explainable AI (XAI)  
+- Scalable backend design  
+- Business-rule driven pricing
+  
 ---
 
 ## 📈 Future Improvements
 Docker deployment
-Cloud hosting (AWS / Azure)
+Cloud hosting 
 Database integration
 CI/CD pipeline
 Model retraining automation
 
 ---
+
 ## 👩‍💻 Author
 
 Parul Sharma  
