@@ -287,9 +287,9 @@ Interactive frontend for the insurance risk and pricing system.
   - Income adjustment
 
 ### 📄 PDF Report
-- Downloadable text-only report
-- Includes risk, premium, explanation, and tips  
-- Sample: `artifacts/insurance_report.pdf`
+  - Downloadable text-only report
+  - Includes risk, premium, explanation, and tips  
+  - Sample: `artifacts/insurance_report.pdf`
 
   ---
   
@@ -331,17 +331,18 @@ streamlit run frontend/streamlit_app.py
 ---
 
 ## 📈 Future Improvements
-Docker deployment
-Cloud hosting 
-Database integration
-CI/CD pipeline
-Model retraining automation
+- Docker deployment
+- Cloud hosting 
+- Database integration
+- CI/CD pipeline
+- Model retraining automation
 
 ---
 
 ## 👩‍💻 Author
 
-Parul Sharma  
+**Parul Sharma** 
+
 AI/ML Engineer | Applied ML & DL 
 
 ## ⭐ Acknowledgement
