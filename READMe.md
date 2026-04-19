@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.png" alt="Nordic Insurance AI Banner" width="100%"/>
+  <img src="frontend/assets/banner.png" alt="Nordic Insurance AI Banner" width="100%"/>
 </p>
 
 <p align="center">
@@ -12,6 +12,15 @@
 # 🇩🇰 Nordic Insurance AI
 
 An end-to-end **machine learning-powered insurance pricing system** that predicts **customer risk** and calculates **dynamic insurance premiums** using **FastAPI**, **Streamlit**, and **Docker**.
+
+---
+
+## 🎯 Quick Highlights
+
+- End-to-end ML system (UI + API + Model)
+- Real-world insurance pricing simulation
+- Fully Dockerized deployment
+- Explainable AI for transparent decisions
 
 ---
 
@@ -65,17 +74,17 @@ G --> A
 
 ---
 
-## 🚀 Project Impact
+## 📌 Why This Project Matters
 
-This project demonstrates:
+This project demonstrates a production-style ML system by integrating:
 
-- End-to-end machine learning system design
-- Production-style API-first architecture
-- Dockerized microservices deployment
-- Real-world insurance pricing engine
-- Explainable AI for business transparency
+- ML-based risk scoring  
+- Rule-based pricing engine  
+- API-first backend architecture  
+- Containerized deployment with Docker
 
 ---
+
 
 ## 🗂️ Dataset & Model
 
@@ -105,56 +114,27 @@ The system is built using an insurance dataset containing demographic, health, a
 
 ---
 
-## 🔄 System Overview
+## 🧠 Explainability & Pricing Logic
 
-1. User enters details in Streamlit UI  
-2. Request is sent to FastAPI backend  
-3. Pydantic validates input data  
-4. Features are engineered/preprocessed  
-5. ML model predicts risk category  
-6. Pricing engine calculates insurance premium  
-7. Response is formatted and returned  
-8. Streamlit displays results  
+The system provides transparent insurance decisions by combining machine learning predictions with rule-based adjustments. Each factor contributes to the final premium in a clear and interpretable way.
 
----
+### 💰 Formula
 
-## 🧠 Explainability
-
-The system provides transparent insurance decisions by breaking down how the final risk and premium are calculated.
+`Final Premium = Base Premium × City Risk × Smoking Factor × Income Factor × Tax Factor`
 
 ### 🔍 Key Factors
 
 - **ML Model Output** – Base risk predicted from user data  
-- **City Adjustment** – Location-based risk variation  
-- **Smoking Factor** – Increased risk for smokers  
-- **Income Impact** – Normalization for fair pricing  
+- **City Risk** – Location-based risk multiplier  
+- **Smoking Factor** – Higher premium for smokers  
+- **Income Factor** – Adjusts affordability and risk level  
+- **Tax Factor** – Standard regional insurance tax  
 
 ### ✅ Outcome
-- Transparent  
-- Interpretable  
-- User-friendly
-
----
-
-## 📦 Tech Stack
-
-### 🖥️ Backend
-- Python  
-- FastAPI  
-- Pydantic  
-
-### 🤖 Machine Learning
-- Scikit-learn  
-- Pandas  
-- Pickle  
-
-### 🌐 Frontend
-- Streamlit  
-
-### 🐳 DevOps
-- Docker
-- Docker Compose
-
+- Transparent decision-making  
+- Interpretable pricing  
+- User-friendly explanations
+  
 ---
 
 ## 📊 Input & Output Overview
@@ -175,25 +155,6 @@ The system provides transparent insurance decisions by breaking down how the fin
 - Final Insurance Premium (DKK)  
 - Explanation of pricing factors  
 - Personalized savings tips
-
-  ---
-
-## 🧮 Pricing Logic
-
-The final insurance premium is calculated using a rule-based pricing engine that adjusts risk based on multiple factors.
-
-### 💰 Formula
-
-\[
-Final\ Premium = Base\ Premium \times City\ Risk \times Smoking\ Factor \times Income\ Factor \times Tax\ Factor
-\]
-
-### ⚙️ Key Adjustments
-
-- **City Risk** – Location-based risk multiplier (Denmark regions 🇩🇰)  
-- **Smoking Factor** – Higher premium for smokers  
-- **Income Factor** – Adjusts affordability and risk level  
-- **Tax Factor** – Regional insurance tax adjustment  
 
 ---
 
@@ -248,14 +209,33 @@ NordicInsureAI/
 
 ---
 
+## 📦 Tech Stack
+
+### 🖥️ Backend
+- Python  
+- FastAPI  
+- Pydantic  
+
+### 🤖 Machine Learning
+- Scikit-learn  
+- Pandas  
+- Pickle  
+
+### 🌐 Frontend
+- Streamlit  
+
+### 🐳 DevOps
+- Docker
+- Docker Compose
+
+---
+
 ## 📡 FastAPI Layer
 
-The backend exposes a REST API that handles:
-
-- Input validation
-- ML prediction
-- Pricing calculation
-- Response formatting
+The backend exposes a REST API for:
+- Input validation  
+- ML risk prediction  
+- Premium calculation  
 
 ### 📥 Example Request (FastAPI)
 
@@ -277,51 +257,33 @@ The backend exposes a REST API that handles:
 {
   "predicted_category": "Medium",
   "confidence": 0.92,
-  "final_premium_dkk": 8200,
-  "currency": "DKK",
-  "explanation": [
-     "Your insurance starts from a base price of 600 DKK based on your risk category (Medium)",
-     "Living in Esbjerg has a neutral impact on your risk score (multiplier: 1.0)",
-     "Smoking increases health risk and therefore your premium",
-     "Your income level (DKK 460000.0) adjusts affordability (multiplier: 1.0)",
-     " A standard Danish insurance tax is applied to the final premium"
-  ],
-  "savings_tips": [
-    "Avoid smoking to reduce premium",
-    "Living in low-risk city reduces cost"
-  ]
+  "final_premium_dkk": 8200
 }
 ```
+
+🔗 Full API documentation available at `/docs`  
+(Accessible at http://localhost:8000/docs when running locally)
+
 ---
 
 ## 🖥️ Streamlit Application
 
-Interactive frontend for the insurance risk and pricing system.
+Interactive frontend for user input and real-time premium calculation.
 
 ### ⚙️ Features
-- User input form (age, income, city, lifestyle)
-- Sends request to FastAPI `/predict`
-- Displays:
-  - Risk category
-  - Confidence score
-  - Final premium (DKK)
-  - Explanation of factors
-  - Savings tips
+- Input form (age, income, city, lifestyle)
+- Calls FastAPI `/predict` endpoint
+- Displays risk category, confidence, and final premium
 
 ### 📊 Visualization
-- Waterfall chart showing:
-  - Base ML risk
-  - City adjustment
-  - Smoking factor
-  - Income adjustment
+- Waterfall chart showing contribution of pricing factors
 
-### 📄 PDF Report
-  - Downloadable text-only report
-  - Includes risk, premium, explanation, and tips  
-  - Sample: `artifacts/insurance_report.pdf`
-
-  ---
+### 📄 Report
+- Downloadable PDF with risk, premium, and explanation  
+- Sample: `artifacts/insurance_report.pdf`
   
+---
+
 ## 🚀  Run with Docker
 
 ```bash
