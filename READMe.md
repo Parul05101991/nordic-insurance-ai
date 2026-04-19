@@ -1,8 +1,4 @@
 <p align="center">
-  <img src="frontend/assets/banner.png" alt="Nordic Insurance AI Banner" width="100%"/>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python">
   <img src="https://img.shields.io/badge/FastAPI-Backend-green?logo=fastapi">
   <img src="https://img.shields.io/badge/Streamlit-Frontend-red?logo=streamlit">
