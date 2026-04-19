@@ -21,7 +21,7 @@ timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 # PATH SETUP
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from backend.config.city_tiers import tier_1_cities, tier_2_cities
+from shared.config.city_tiers import tier_1_cities, tier_2_cities
 
 
 # PAGE CONFIG
@@ -93,7 +93,7 @@ submit = st.button("🚀 Generate Insurance Report")
 # API CALL
 
 def get_prediction(smoker_status: bool):
-    url = "http://127.0.0.1:8000/predict"
+    url = "http://backend:8000/predict"
 
     payload = {
         "age": age,

@@ -1,4 +1,4 @@
-from backend.config.city_tiers import tier_1_cities, tier_2_cities
+from shared.config.city_tiers import tier_1_cities, tier_2_cities
 
 
 def calculate_bmi(weight: float, height: float) -> float:

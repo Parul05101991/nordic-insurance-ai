@@ -1,15 +1,17 @@
+<p align="center">
+  <img src="assets/banner.png" alt="Nordic Insurance AI Banner" width="100%"/>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python">
+  <img src="https://img.shields.io/badge/FastAPI-Backend-green?logo=fastapi">
+  <img src="https://img.shields.io/badge/Streamlit-Frontend-red?logo=streamlit">
+  <img src="https://img.shields.io/badge/Docker-Container-blue?logo=docker">
+</p>
+
 # 🇩🇰 Nordic Insurance AI
 
-An end-to-end **AI-powered insurance pricing system** that predicts customer risk and calculates dynamic insurance premiums using Machine Learning + Business Rules.
-
----
-
-## 📌 Highlights
-
-- End-to-end ML system (UI → API → Model → Pricing)
-- Real-world insurance use case (Denmark 🇩🇰)
-- Explainable AI with transparent pricing
-- Production-style modular architecture
+An end-to-end **machine learning-powered insurance pricing system** that predicts **customer risk** and calculates **dynamic insurance premiums** using **FastAPI**, **Streamlit**, and **Docker**.
 
 ---
 
@@ -18,19 +20,19 @@ An end-to-end **AI-powered insurance pricing system** that predicts customer ris
 High-level flow of the system:
 
 ```text
-Streamlit UI  
-↓  
-FastAPI `/predict` Endpoint  
-↓  
-Pydantic Validation  
-↓  
-Feature Engineering / Preprocessing
-↓  
-ML Risk Prediction  
-↓  
-Premium Calculation (Business Rules)  
-↓  
-Response to UI
+Streamlit UI
+        ↓
+FastAPI /predict endpoint
+        ↓
+Pydantic validation
+        ↓
+Feature engineering / preprocessing
+        ↓
+ML risk prediction
+        ↓
+Pricing engine (business rules)
+        ↓
+Response returned to UI
 ```
 
 ---
@@ -44,11 +46,35 @@ graph TD
 A[Streamlit UI] --> B[FastAPI Backend]
 B --> C[Pydantic Validation]
 C --> D[Feature Engineering]
-D --> E[ML Risk Model]
+D --> E[ML Model Prediction]
 E --> F[Pricing Engine]
 F --> G[Response Builder]
 G --> A
 ```
+---
+
+## ⚙️ Key Features
+
+- Risk classification (Low / Medium / High)
+- Dynamic premium calculation using business rules
+- City-based risk scoring (Denmark 🇩🇰)
+- Lifestyle-based adjustments (smoking, income)
+- Input validation using Pydantic
+- Explainable pricing decisions
+- Personalized savings recommendations
+
+---
+
+## 🚀 Project Impact
+
+This project demonstrates:
+
+- End-to-end machine learning system design
+- Production-style API-first architecture
+- Dockerized microservices deployment
+- Real-world insurance pricing engine
+- Explainable AI for business transparency
+
 ---
 
 ## 🗂️ Dataset & Model
@@ -57,7 +83,8 @@ The system is built using an insurance dataset containing demographic, health, a
 
 ### 📊 Dataset Features
 - Age  
-- BMI-related features (height, weight)  
+- Height
+- Weight
 - Income level  
 - Smoking status  
 - City/location  
@@ -88,18 +115,6 @@ The system is built using an insurance dataset containing demographic, health, a
 6. Pricing engine calculates insurance premium  
 7. Response is formatted and returned  
 8. Streamlit displays results  
-
----
-
-## ⚙️ Features
-
-- Risk classification (Low / Medium / High)
-- Dynamic premium calculation using business rules
-- City-based risk scoring (Denmark-focused 🇩🇰)
-- Lifestyle-based adjustments (smoking, income)
-- Input validation using Pydantic
-- Detailed explanation of pricing factors
-- Personalized savings recommendations 
 
 ---
 
@@ -136,14 +151,19 @@ The system provides transparent insurance decisions by breaking down how the fin
 ### 🌐 Frontend
 - Streamlit  
 
+### 🐳 DevOps
+- Docker
+- Docker Compose
+
 ---
 
 ## 📊 Input & Output Overview
 
 ### 🧾 Input Features
-- Age (18–65)  
-- Weight (55–100 kg)  
-- Height (160–195 cm)  
+
+- Age (18–65 years)
+- Weight (55–100 kg)
+- Height (160–195 cm) 
 - Annual Income (DKK 280k–800k)  
 - Smoking Status  
 - City (Denmark)  
@@ -164,7 +184,9 @@ The final insurance premium is calculated using a rule-based pricing engine that
 
 ### 💰 Formula
 
-`Final Premium = Base Premium × City Risk × Smoking Factor × Income Factor × Tax Factor`
+\[
+Final\ Premium = Base\ Premium \times City\ Risk \times Smoking\ Factor \times Income\ Factor \times Tax\ Factor
+\]
 
 ### ⚙️ Key Adjustments
 
@@ -180,41 +202,48 @@ The final insurance premium is calculated using a rule-based pricing engine that
 ```text
 NordicInsureAI/
 │
+├── README.md
+├── docker-compose.yml
+├── requirements.txt
+│
 ├── backend/
-│   ├── app.py                # FastAPI entry point
-│   ├── predict.py           # ML inference logic
-│   ├── config/              # Business rules & settings
-│   │   ├── city_tiers.py
+│   ├── Dockerfile
+│   ├── app.py
+│   ├── predict.py
+│   │
+│   ├── config/
 │   │   ├── nordic_adjustments.py
 │   │   ├── pricing_service.py
 │   │   └── settings.py
 │   │
-│   ├── model/               # Trained ML model (.pkl)
+│   ├── model/
 │   │   └── insurance_premium_predictor_model.pkl
 │   │
-│   ├── schema/              # Pydantic validation models
+│   ├── schema/
 │   │   ├── user_input.py
 │   │   └── prediction_response.py
 │   │
-│   └── utils/               # Helper functions
+│   └── utils/
 │       └── preprocess.py
 │
 ├── frontend/
-│   ├── assets/              # Images, logos
-│   │   └── logo.png
-│   └── streamlit_app.py    # UI application
+│   ├── Dockerfile
+│   ├── streamlit_app.py
+│   └── assets/
+│       └── logo.png
 │
-├── data/                    # Dataset files
+├── shared/
+│   └── config/
+│       └── city_tiers.py
+│
+├── data/
 │   └── insurance_premium_dataset_sample.csv
 │
-├── notebooks/               # Experiments & training
-│   ├── Dataset.py
+├── notebooks/
 │   └── ml_model_new.ipynb
 │
-├── artifacts/               # Generated outputs (reports/logs)
-│
-├── requirements.txt
-└── README.md
+├── artifacts/
+│   └── insurance_report.pdf
 ```
 
 ---
@@ -232,13 +261,13 @@ The backend exposes a REST API that handles:
 
 ```json
 {
-  "age": 30,
-  "weight": 75,
+  "age": 37,
+  "weight": 59,
   "height": 180,
-  "income_dkk": 500000,
-  "smoker": false,
-  "city": "Copenhagen",
-  "occupation": "private_job"
+  "income_dkk": 460000,
+  "smoker": true,
+  "city": "Esbjerg",
+  "occupation": "freelancer"
 }
 ```
 
@@ -252,7 +281,7 @@ The backend exposes a REST API that handles:
   "currency": "DKK",
   "explanation": [
      "Your insurance starts from a base price of 600 DKK based on your risk category (Medium)",
-     "Living in Esbjerg affects your risk score (multiplier: 1.0)",
+     "Living in Esbjerg has a neutral impact on your risk score (multiplier: 1.0)",
      "Smoking increases health risk and therefore your premium",
      "Your income level (DKK 460000.0) adjusts affordability (multiplier: 1.0)",
      " A standard Danish insurance tax is applied to the final premium"
@@ -293,31 +322,17 @@ Interactive frontend for the insurance risk and pricing system.
 
   ---
   
-## 🚀 Run Locally
-
-### 🧬 Clone Repository
+## 🚀  Run with Docker
 
 ```bash
-git clone https://github.com/parul01101991/NordicInsureAI.git
+docker-compose up --build
 ```
+### 🌐 Access Application
+| Service         | URL                                                      |
+|----------------|----------------------------------------------------------|
+| 🎨 **Streamlit UI** | [http://localhost:8501](http://localhost:8501)           |
+| ⚙️ **FastAPI Docs** | [http://localhost:8000/docs](http://localhost:8000/docs) |
 
-### ⚙️ Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 🖥️ Start Backend (FastAPI)
-
-```bash
-uvicorn backend.app:app --reload
-```
-
-### 🌐 Start Frontend (Streamlit)
-
-```bash
-streamlit run frontend/streamlit_app.py
-```
 ---
 
 ## 🎯 Design Principles
@@ -331,11 +346,11 @@ streamlit run frontend/streamlit_app.py
 ---
 
 ## 📈 Future Improvements
-- Docker deployment
-- Cloud hosting 
-- Database integration
-- CI/CD pipeline
+
+- Cloud deployment (AWS / Azure / GCP)
+- CI/CD pipeline (GitHub Actions)
 - Model retraining automation
+- Database integration (PostgreSQL / MongoDB)
 
 ---
 

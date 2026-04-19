@@ -1,7 +1,7 @@
 # Denmark Insurance Pricing Engine
 #(ML + Business Rules + Explainability + Safety)
 
-from backend.config.city_tiers import tier_1_cities, tier_2_cities
+from shared.config.city_tiers import tier_1_cities, tier_2_cities
 from backend.config.nordic_adjustments import (
     SMOKER_MULTIPLIER,
     TAX_FACTOR,
